@@ -41,7 +41,7 @@ services:
     depends_on:
       - configuration
     ports:
-      - 8001:8001
+      - 8001:8000
     environment:
       HOST: configuration
       PORT: 8000
