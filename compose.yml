@@ -1,6 +1,7 @@
 version: '3.8'
 services:
   db:
+    container_name: db
     image: postgres:14.1-alpine
     restart: always
     environment:
@@ -17,6 +18,7 @@ services:
       context: ./
       dockerfile: "configuration.Dockerfile"
     image: configuration
+    restart: on-failure
     depends_on:
       - db
     ports:
@@ -35,6 +37,7 @@ services:
       context: ./
       dockerfile: "antivirus.Dockerfile"
     image: anti_virus
+    restart: on-failure
     depends_on:
       - configuration
     ports:
